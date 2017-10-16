@@ -1,2 +1,6 @@
 scala.*
 !scala.tex
+.idea
+project/
+target/
+build.sbt
