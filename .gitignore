@@ -4,3 +4,4 @@ scala.*
 project/
 target/
 build.sbt
+*.log
