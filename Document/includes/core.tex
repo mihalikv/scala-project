@@ -1,0 +1,125 @@
+\section{OOP v Scale}
+\indent Scala je objektovo orientovanı jazyk v zmysle, e kadá hodnota je objekt. Typy a správanie objektov sú opísané v triedach a ich vlastnostiach. Triedy je moné rozširova poomcou dedenia alebo pomocou flexibilného mechanizmu mixinov.
+
+\section{Typy v Scale}
+\indent V scale majú všetky hodnoty jednoznaènı typ. A na vıber máme nasledujúce typy:
+\begin{itemize}  
+\item \textbf{Any} - ide o supertyp všetkıch ostatnıch typov. Tento typ v sebe definuje univerzálne metódy \textit{equals}, \textit{hashCode} a \textit{toString}. \textbf{Any} má dvoch prijamych potomkov \textit{AnyVal} a \textit{AnyRef}. 
+\item \textbf{AnyVal} - predstavuje rodièa pre typy, ktoré v sebe uchovávajú hodnotu. Medzi tieto typy patrí \textit{Double}, \textit{Float}, \textit{Long}, \textit{Int}, \textit{Short}, \textit{Byte}, \textit{Char}, \textit{Unit} a \textit{Boolean}. Tıchto 9 typov je nenulovıch.
+\item  \textbf{Unit} je typ, ktorı v sebe nenesie iadne zmysluplné informácie. Tento typ môe nadobudnú len hodnotu \textbf{()}. Typ \textit{Unit} je podobnı typu \textit{void} z jazyka C/C++.
+\item \textbf{AnyRef} zahrnuje typy, ktoré uchovávajú nejakú referenciu. Všetky typy, ktoré boli definované uívate¾om sú podtypy \textit{AnyRef}. 
+\item \textbf{Nothing} je podtyp všetkıch typov. Neexistuje iadna hodnota, ktorá by bola typu \textit{Nothing}. Bene sa tento typ pouíva na signalizovanie neuspešného ukonèenia ako napríklad vyvolanie vınimky, koniec programu alebo nekoneènı cyklus. 
+\item \textbf{Null} je podtyp všetkıch referenènıch typov. Tento typ môe obsahova len jednu hodnotu, ktorou je \textit{null}. \textit{Null} je najèastejšie pouívanı v prípadoch kedy je potrebné pracova s inımi JVM jazykmi. Typ \textit{Null} by nikdy nemal by pouívanı v Scale.
+\end{itemize}
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=16cm]{img/unified-types-diagram.png}
+  \caption{Scala typy}
+  \label{Scala typy}
+\end{figure}
+
+\section{Triedy}	
+Triedy podobne ako v inıch jazykoch aj v \textit{Scale} sa definujú pomocou k¾úèového slova \textbf{class} a nová inštancia triedy sa vytvára pomocou k¾úèového slova \textbf{new}.
+
+\begin{lstlisting}
+class Point(var x: Int = 0, var y: Int = 0) {
+
+  def move(dx: Int, dy: Int): Unit = {
+    x = x + dx
+    y = y + dy
+  }
+
+  override def toString: String =
+    s"($x, $y)"
+}
+
+val point0 = new Point
+val point1 = new Point(1)
+val point2 = new Point(y=2)
+}\end{lstlisting}
+ \caption{Triedy v Scale}
+ \label{euclid}
+\end{algorithm}
+
+\subsection{Súkromné prehliadanie}
+\noindent Najpouívanejšie internetové prehliadaèe súèasnosti majú v sebe zabudovanú funkcionalitu, ktorá dokáe èiastoène anonymizova prístup na internet. Táto funkcionalita blokuje ukladanie navštívenıch stránok do histórie a nezaznamenáva súbory, ktoré sa stiahnu z~internetu. Súbory...
+
+\begin{table}[!htbp]
+\begin{center}
+\begin{tabular}{p{4cm}|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c}
+& \multicolumn{14}{c}%
+	 {\textbf{Funkcia}}\\ \hline
+&&&& & &\multicolumn{8}{c}%
+	 {Modifikácia}\\ 
+\textbf{Modul} &\begin{sideways} zobrazenie hlavièky \end{sideways} &\begin{sideways} blokovanie skriptov \end{sideways} &\begin{sideways} zmena IP \end{sideways} & \begin{sideways} zmena lokalizácie \end{sideways} & \begin{sideways} zmazanie/blokovanie cookies \end{sideways} & \begin{sideways} blokovanie trackerov \end{sideways}  & \begin{sideways} popis \end{sideways} & \begin{sideways}pouívate¾skı agent\end{sideways} & \begin{sideways} kódové oznaèenie prehliadaèa \end{sideways} & \begin{sideways} názov prehliadaèa \end{sideways} & \begin{sideways} verzia prehliadaèa \end{sideways} & \begin{sideways} platforma \end{sideways} & \begin{sideways} vırobca prehliadaèa \end{sideways} & \begin{sideways} oznaèenie vırobcu prehliadaèa \end{sideways} \\ \hline
+User agent switcher & & & & & &  & X & X & X & X & X & X & X & X  \\ \hline
+Ghostery &  && & & X & X &  &  & & & & & & \\  \hline
+Better privacy && &  & & X &  &  &  & & & & & & \\  \hline
+Anonymox &  && X & X & X &  & X & X & & & & & & \\  \hline
+Modify headers & & &  &  & X &  &  & X &  &  &  & & &  \\  \hline
+Request policy & & &  &  & & X  &  &  &  &  &  & & &   \\  \hline
+Live HTTP headers & X& &  &  & &  &  &  &  &  &  & & &   \\  \hline
+User agent awitcher for chrome & & &  &  & &  & X & X &  &  &  & & &   \\  \hline
+Header hacker & & &  &  & &  & X & X & X & X & X & X & X & X    \\  \hline
+Mod header & & &  &  & &  & X & X & X & X & X & X & X & X    \\  \hline
+Script no & &X &  &  & &  &  &  &  &  &  &  &  &     \\  \hline
+No script & &X &  &  & &  &  &  &  &  &  &  &  &     \\  \hline
+Proxify it & & &X  & X & &  &  &  &  &  &  &  &  &     \\  \hline
+I'm not here & & &  & X & &  &  &  &  &  &  &  &  &     \\  \hline
+Get anonymous personal edition & &X &X &X &X&X &  &  &  &  &  &  &  &     \\  \hline
+Anonymous browsing toolbar & & & X & X & &  &  &  &  &  &  &  &  &     \\  \hline
+Easy hide your IP and surf anonymously & & & X & X& &  &  & X & X & X & X &  &  &     \\  \hline
+\end{tabular}
+\caption{Moduly a ich funkcie pri anonymizácii}
+\label{modulyVlastnosti}
+\end{center}
+\end{table}
+
+\subsection{Anonymná sie}
+\noindent Anonymná sie je sie serverov, medzi ktorımi dáta prechádzajú šifrované. V anonymnıch sieach dáta prechádzajú z poèítaèa pouívate¾a, odkia¾ bola poiadavka poslaná, cez viaceré proxy smerovaèe, z ktorıch kadı správu doplní o smerovanie a zašifruje vlastnım k¾úèom. Cesta od ...
+
+
+\subsection{Funkcionalita}
+\noindent  Rozšírenie tie okrem splnenia špecifikácie malo pre preh¾adnos a overenie funkènosti zobrazova údaje, ktoré boli na server odoslané. Zoznam údajov odoslanıch na server, sa mal uklada do krátkodobej histórie, aby nemal pouívate¾ k dispozícií len najnovšie údaje, ale aj údaje odoslané v nejakom èasovom období. 
+
+\subsubsection{Funkcionalita2}
+\noindent Samozrejmosou bolo nastavenie zapnutia rozšírenia pri štarte, prípadne interval zmeny odosielanıch údajov.
+
+\subsection{Vzh¾ad}
+\noindent Dôleitou poiadavkou kladenou na rozšírenie bolo príjemné pouívate¾ské rozhranie. Z~tohto dôvodu malo rozšírenie obsahova zoznam modifikovanıch vlastností a tlaèidlo pre prístup k nastaveniam rozšírenia v jednoduchej a praktickej forme. Predpokladanı vzh¾ad je zobrazenı na obrázku è. \ref{vzhladobr}.
+ 
+\noindent Dôleitou poiadavkou kladenou na rozšírenie bolo príjemné pouívate¾ské rozhranie.\cite{anonlib} Z~tohto dôvodu malo rozšírenie obsahova zoznam modifikovanıch vlastností a tlaèidlo pre prístup k nastaveniam rozšírenia v jednoduchej a praktickej forme. Predpokladanı vzh¾ad je zobrazenı na obrázku è. \ref{vzhladobr}.
+
+\begin{algorithm}
+\lstset{
+    language=C,
+    basicstyle=\small\sffamily,
+    frame=none,
+    numbers=left,
+    xleftmargin=5.0ex,
+    numberstyle=\tiny,
+    stepnumber=1,
+    showstringspaces=false,
+    keywordstyle=\color{blue}\bfseries
+    }
+\lstset{emph={%  Adjust any special keywords
+    printf%
+    },emphstyle={\color[rgb]{1,0,0}\bfseries}%
+}%
+\begin{lstlisting}
+/* Hello World program */
+
+#include<stdio.h>
+
+struct cpu_info {
+    long unsigned utime, ntime, stime, itime;
+    long unsigned iowtime, irqtime, sirqtime;
+};
+
+main()
+{
+    printf("Hello World");
+}\end{lstlisting}
+ \caption{Ukáka algoritmu}
+ \label{euclid}
+\end{algorithm}
