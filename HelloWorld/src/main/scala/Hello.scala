@@ -33,6 +33,17 @@ object FunctionAndMethods extends App {
     println(addOne2(1))
 }
 
+class Decorator(left: String, right: String) {
+    def layout[Int](x: Int): String = left + x.toString() + right
+}
+
+object HigherOrderFunc extends App {
+    def apply(f: Int => String, v: Int): String = f(v)
+
+    val decorator = new Decorator("[", "]")
+    println(apply(decorator.layout, 7))
+}
+
 object IdFactory {
     private var counter = 0
 
@@ -61,15 +72,4 @@ object Traits extends App {
     println(IdFactory.create())
     println(IdFactory.create())
     println(IdFactory.create())
-}
-
-class Decorator(left: String, right: String) {
-    def layout[Int](x: Int): String = left + x.toString() + right
-}
-
-object HigherOrderFunc extends App {
-    def apply(f: Int => String, v: Int): String = f(v)
-
-    val decorator = new Decorator("[", "]")
-    println(apply(decorator.layout, 7))
 }
