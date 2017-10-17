@@ -27,6 +27,8 @@ class Point(private var _x: Int = 0, private var _y: Int = 0) {
         s"($x, $y)"
 }
 
+case class PointCase(x: Int, y: Int)
+
 object ConstructorAndClasses extends App {
     val points = List(
         new Point,
@@ -41,4 +43,10 @@ object ConstructorAndClasses extends App {
 
     i_can_change_this += 1
 //    i_can_not_change_this += 1
+
+//  Case classes
+    val point0 = PointCase(1, 2)
+    val point1 = PointCase(1, 2)
+    if (point0 == point1)
+        println("Equals")
 }
