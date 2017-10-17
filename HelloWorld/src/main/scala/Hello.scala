@@ -7,7 +7,7 @@ object Hello extends App {
 
 object ValVar extends App {
     val x = 1 + 1
-    // x = 3  This does not compile.
+    //x = 3
     val y: Int = 1 + 1
 
     var x2 = 1 + 1
@@ -18,7 +18,7 @@ object ValVar extends App {
 object FunctionAndMethods extends App {
 
     //    Functions
-    (x: Int) => x + 1
+    (x: Int) => println(x + 1)
     val addOne0 = (x: Int) => x + 1
 
     //    Methods
@@ -34,11 +34,15 @@ object FunctionAndMethods extends App {
 }
 
 class Decorator(left: String, right: String) {
-    def layout[Int](x: Int): String = left + x.toString() + right
+    def layout(x: Int): String = {
+        left + x.toString() + right
+    }
 }
 
 object HigherOrderFunc extends App {
-    def apply(f: Int => String, v: Int): String = f(v)
+    def apply(f: Int => String, v: Int): String = {
+        f(v)
+    }
 
     val decorator = new Decorator("[", "]")
     println(apply(decorator.layout, 7))

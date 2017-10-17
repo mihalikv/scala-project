@@ -2,6 +2,8 @@
   * Created by Viliam on 17.10.2017.
   */
 class Point(private var _x: Int = 0, private var _y: Int = 0) {
+    println("Constructor")
+
     def x: Int = {
         _x
     }
@@ -37,12 +39,6 @@ object ConstructorAndClasses extends App {
     )
     points.foreach(println)
     points.head.x = 20
-
-    var i_can_change_this = 2
-    val i_can_not_change_this = 2
-
-    i_can_change_this += 1
-//    i_can_not_change_this += 1
 
 //  Case classes
     val point0 = PointCase(1, 2)
