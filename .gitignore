@@ -1,5 +1,6 @@
 scala.*
 !scala.tex
+!scala.pptx
 .idea
 project/
 target/
